@@ -1,0 +1,17 @@
+7segment 다시 해봄
+
+lcd 에 공백말고 자꾸 이상한 문자 뜨는 거 고침(lcd.c) 참고
+
+
+
+
+7segment/ lcd/ led/ dotmatrix insmod해서 cmd로 실험
+./7segtest 9876 성공
+
+./ledtest 90 성공
+
+./lcdtest 첫줄 앞에 두글자가 잘림 ㅜㅜ -> 수정 후 성공
+
+./dottest 성공
+
+lcd 안드로이드랑 연동 성공

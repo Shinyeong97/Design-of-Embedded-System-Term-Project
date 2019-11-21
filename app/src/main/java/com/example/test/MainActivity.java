@@ -8,13 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
     TextView tv;
-    EditText input;
-    Button btn;
+    EditText sseg_input;
+    Button sseg_btn;
+    EditText lcd_input1;
+    EditText lcd_input2;
+    Button lcd_btn;
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -34,18 +34,33 @@ public class MainActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         tv = findViewById(R.id.sample_text);
-        input = findViewById(R.id.input);
-        btn = findViewById(R.id.button);
+        sseg_input = findViewById(R.id.sseg_input);
+        sseg_btn = findViewById(R.id.sseg_btn);
+        lcd_input1 = findViewById(R.id.lcd_input1);
+        lcd_input2 = findViewById(R.id.lcd_input2);
+        lcd_btn = findViewById(R.id.lcd_btn);
 
-        LcdWrite("hi", "android");
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        sseg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int data = getData();
                 SSegmentWrite(data);
-                input.setText("");
+                sseg_input.setText("");
                 tv.setText("7segment settext to "+ Integer.toString(data));
+            }
+        });
+
+        lcd_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String first = lcd_input1.getText().toString();
+                String second = lcd_input2.getText().toString();
+
+                if (first.equals("") || second.equals("")){
+                    return;
+                } else {
+                    LcdWrite(first, second);
+                }
             }
         });
 
@@ -53,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public int getData(){
-        return Integer.parseInt(input.getText().toString());
+        return Integer.parseInt(sseg_input.getText().toString());
     }
 
 

@@ -7,6 +7,8 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/sseg_layout"
+        android:layout_marginVertical="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -20,7 +22,7 @@
             android:text="7Segment: " />
 
         <EditText
-            android:id="@+id/input"
+            android:id="@+id/sseg_input"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:hint="enter number"
@@ -28,7 +30,59 @@
             android:maxLength="4" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/sseg_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="입력" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lcd_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/sseg_layout"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Lcd first: " />
+
+        <EditText
+            android:id="@+id/lcd_input1"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:hint="first string"
+            android:inputType="text"
+            android:maxLength="16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lcd_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/lcd_layout1"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Lcd second: " />
+
+        <EditText
+            android:id="@+id/lcd_input2"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:hint="second string"
+            android:inputType="text"
+            android:maxLength="16" />
+
+        <Button
+            android:id="@+id/lcd_btn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:text="입력" />
