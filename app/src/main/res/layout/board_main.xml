@@ -3,28 +3,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:background="#000"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/rotate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginRight="220dp"
         android:text="Rotate"
-        app:layout_constraintEnd_toStartOf="@+id/btright"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginRight="120dp"
         android:text="Right"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,46 +33,52 @@
         android:id="@+id/btleft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="320dp"
+        android:layout_marginRight="320dp"
         android:text="Left"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btright" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginRight="220dp"
+        android:layout_marginBottom="220dp"
         android:text="Down"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btleft" />
+        app:layout_constraintTop_toBottomOf="@+id/rotate"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginRight="220dp"
+        android:layout_marginBottom="8dp"
         android:text="reset"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/down" />
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint1"
-        android:layout_width="300dp"
-        android:layout_height="727dp"
-        android:background="#55ff55"
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="398dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -89,25 +95,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/thread1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="88dp"
-            android:text="1"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="600dp"
+            android:layout_height="360dp"
             android:background="#fff"
             app:layout_constraintBottom_toBottomOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -117,10 +107,10 @@
             app:layout_constraintVertical_bias="0.0">
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView"
@@ -166,10 +156,10 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView7"
@@ -215,10 +205,10 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView13"
@@ -264,10 +254,10 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView19"
@@ -313,10 +303,10 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView25"
@@ -362,10 +352,10 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView31"
@@ -411,10 +401,10 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView37"
@@ -460,10 +450,10 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView43"
@@ -509,10 +499,10 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView49"
@@ -558,10 +548,10 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView55"
@@ -607,10 +597,10 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView61"
@@ -656,10 +646,10 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="300dp"
+                android:layout_width="180dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="#555"
-                android:layout_height="50dp">
+                android:background="#555">
 
                 <ImageView
                     android:id="@+id/imageView67"
@@ -704,20 +694,16 @@
                     app:srcCompat="@drawable/non" />
             </TableRow>
         </TableLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginLeft="3dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/constraint1"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toTopOf="parent">
 
         <FrameLayout
@@ -731,8 +717,8 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
             android:layout_weight="0"
             android:background="#000"
             android:text="TextView" />
@@ -748,8 +734,8 @@
 
         <TextView
             android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
             android:layout_weight="0"
             android:background="#000"
             android:text="TextView" />
@@ -763,5 +749,4 @@
 
         </FrameLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
