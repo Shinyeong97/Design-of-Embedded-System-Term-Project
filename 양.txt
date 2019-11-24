@@ -36,3 +36,19 @@ dotmatrix때처럼
 for문 돌려서 주소값 +2씩 증가시켜서 읽어옴
 
 이거 안드로이드랑 연동시킬 때 스레드 & 핸들러 사용
+
+
+gradle.properties에 
+android.useDeprecatedNdk=true 추가
+
+build.gradle(app)에
+        defaultConfig {
+            externalNativeBuild {
+                cmake {
+                    abiFilters 'x86', 'arm64-v8a', 'armeabi-v7a', 'x86_64'
+                }
+            }
+        }
+추가
+
+constraintlayout androidx로 바꿈
