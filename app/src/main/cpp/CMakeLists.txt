@@ -29,13 +29,13 @@ add_library( # Sets the name of the library.
         lcd.c)
 
 add_library( # Sets the name of the library.
-        led
+        pbutton
 
         # Sets the library as a shared library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        led.c)
+        pbutton.c)
 
 #add_library( # Sets the name of the library.
 #        dotmatrix
@@ -64,7 +64,7 @@ find_library( # Sets the name of the path variable.
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-        7segment lcd led
+        7segment lcd pbutton
 
         # Links the target library to the log library
         # included in the NDK.

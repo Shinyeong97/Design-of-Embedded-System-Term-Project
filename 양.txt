@@ -30,3 +30,7 @@ pushbutton이라 명명했는데 dev보니까 push가 예약어인지 push\ button 이런식으로 되
 현재까지 짠 코드로 테스트 했을 때 왼쪽 맨 위 버튼 누른채로 ./pbuttontest 하면 1됨 (다른 경우는 다 0)
 wordvalue가 8bit까지만 읽어오는듯...? 이거 관련해서 계속하면 될듯 int로 바꿔바도 안됨
 포인터를 다시 지정해야하나...
+
+진짜 버튼마다 2 bytes register로 된거여서
+dotmatrix때처럼
+for문 돌려서 주소값 +2씩 증가시켜서 읽어옴
