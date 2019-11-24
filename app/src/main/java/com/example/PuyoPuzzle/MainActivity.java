@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.PuyoPuzzle;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -7,7 +7,6 @@ import android.graphics.Point;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;

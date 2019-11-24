@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.PuyoPuzzle;
 import android.view.View;
 
 public class Controller implements View.OnClickListener {
