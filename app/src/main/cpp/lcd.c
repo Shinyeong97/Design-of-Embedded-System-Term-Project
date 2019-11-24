@@ -20,7 +20,7 @@
 #define LCD_MAGIC               0xBD
 #define LCD_SET_CURSOR_POS     _IOW(LCD_MAGIC, 0, int)
 
-JNIEXPORT jint JNICALL Java_com_example_test_MainActivity_LcdWrite
+JNIEXPORT jint JNICALL Java_com_example_PuyoPuzzle_MainActivity_LcdWrite
         (JNIEnv *jenv, jobject self, jstring first, jstring second){
     int fd, pos;
 

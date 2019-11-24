@@ -12,7 +12,7 @@
  * Class:     com_example__MainActivity
  * Method:    PbuttonRead
  */
-JNIEXPORT jint JNICALL Java_com_example_test_MainActivity_PbuttonRead
+JNIEXPORT jint JNICALL Java_com_example_PuyoPuzzle_MainActivity_PbuttonRead
         (JNIEnv *jenv, jobject self){
     int fd;
     unsigned char wordvalue;

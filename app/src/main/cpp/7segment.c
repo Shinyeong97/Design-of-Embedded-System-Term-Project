@@ -12,7 +12,7 @@
  * Class:     com_example__MainActivity
  * Method:    SSegmentWrite
  */
-JNIEXPORT jint JNICALL Java_com_example_test_MainActivity_SSegmentWrite
+JNIEXPORT jint JNICALL Java_com_example_PuyoPuzzle_MainActivity_SSegmentWrite
         (JNIEnv *jenv, jobject self, jint data){
     int fd;
     unsigned char bytevalues[4];

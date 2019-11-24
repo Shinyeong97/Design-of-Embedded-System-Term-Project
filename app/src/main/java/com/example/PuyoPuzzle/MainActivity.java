@@ -53,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
     Controller mController;
 
     static {
-//        System.loadLibrary("7segment");
-//        System.loadLibrary("lcd");
+        System.loadLibrary("7segment");
+        System.loadLibrary("lcd");
         System.loadLibrary("pbutton");
         //System.loadLibrary("dotmatrix");
     }
 
-//    public native int SSegmentWrite(int data);
-//    public native int LcdWrite(String first, String second);
+    public native int SSegmentWrite(int data);
+    public native int LcdWrite(String first, String second);
     public native int PbuttonRead();
 
     @Override
