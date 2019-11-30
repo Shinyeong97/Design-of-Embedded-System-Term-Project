@@ -56,12 +56,15 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("7segment");
         System.loadLibrary("lcd");
         System.loadLibrary("pbutton");
-        //System.loadLibrary("dotmatrix");
+        System.loadLibrary("dotmatrix");
+        System.loadLibrary("led");
     }
 
     public native int SSegmentWrite(int data);
     public native int LcdWrite(String first, String second);
     public native int PbuttonRead();
+    public native int DotWrite(int data);
+    public native int LedWrite(int data);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
