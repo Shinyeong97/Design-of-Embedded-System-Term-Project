@@ -1,2 +1,0 @@
-ninja: Entering directory `C:\Users\CAU\Documents\GitHub\Design-of-Embedded-System-Term-Project\app\.cxx\cmake\debug\x86'
-ninja: no work to do.
