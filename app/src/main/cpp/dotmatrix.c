@@ -34,7 +34,7 @@ Java_com_example_PuyoPuzzle_MainActivity_DotWrite (JNIEnv *jenv, jobject self, j
     int fd, i;
 
     if ((data < -5) || (data > 9)) {
-        __android_log_print(ANDROID_LOG_ERROR, "DotWrite", "Out of range! \n");
+        //__android_log_print(ANDROID_LOG_ERROR, "DotWrite", "Out of range! \n");
         return -1;
     }
 
@@ -80,7 +80,7 @@ Java_com_example_PuyoPuzzle_MainActivity_DotWrite (JNIEnv *jenv, jobject self, j
 
     }
     else {
-        __android_log_print(ANDROID_LOG_ERROR, "DotWrite", "error opening device : /dev/dotmatrix\n");
+        //__android_log_print(ANDROID_LOG_ERROR, "DotWrite", "error opening device : /dev/dotmatrix\n");
         return -1;
     }
 

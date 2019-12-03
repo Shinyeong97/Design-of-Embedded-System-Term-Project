@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     int [][] serchTable = new int[15][8];
 
     // gird setting
+    TextView tScore;
     ImageView[][] grid = new ImageView[15][8];
     Integer[][] gridID = {{0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0},
@@ -43,8 +45,18 @@ public class MainActivity extends AppCompatActivity {
             {0,R.id.imageView61, R.id.imageView62,R.id.imageView63,R.id.imageView64, R.id.imageView65,R.id.imageView66,0},
             {0,R.id.imageView67, R.id.imageView68,R.id.imageView69,R.id.imageView70,R.id.imageView71,R.id.imageView72,0},
             {0,0,0,0,0,0,0,0}};
+    Integer[][] imageChipset = { //b,l,t,r,bt,lb,lt,rb,rl,rt,lbt,rlb,rlt,rtb,all
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {R.drawable.p11b,R.drawable.p11l,R.drawable.p11t,R.drawable.p11r,R.drawable.p12bt,R.drawable.p12lb,R.drawable.p12lt,R.drawable.p12rb,R.drawable.p12rl,R.drawable.p12rt,R.drawable.p13lbt,R.drawable.p13rlb,R.drawable.p13rlt,R.drawable.p13rtb,R.drawable.p14},
+            {R.drawable.p21b,R.drawable.p21l,R.drawable.p21t,R.drawable.p21r,R.drawable.p22bt,R.drawable.p22lb,R.drawable.p22lt,R.drawable.p22rb,R.drawable.p22rl,R.drawable.p22rt,R.drawable.p23lbt,R.drawable.p23rlb,R.drawable.p23rlt,R.drawable.p23rtb,R.drawable.p24},
+            {R.drawable.p31b,R.drawable.p31l,R.drawable.p31t,R.drawable.p31r,R.drawable.p32bt,R.drawable.p32lb,R.drawable.p32lt,R.drawable.p32rb,R.drawable.p32rl,R.drawable.p32rt,R.drawable.p33lbt,R.drawable.p33rlb,R.drawable.p33rlt,R.drawable.p33rtb,R.drawable.p34},
+            {R.drawable.p41b,R.drawable.p41l,R.drawable.p41t,R.drawable.p41r,R.drawable.p42bt,R.drawable.p42lb,R.drawable.p42lt,R.drawable.p42rb,R.drawable.p42rl,R.drawable.p42rt,R.drawable.p43lbt,R.drawable.p43rlb,R.drawable.p43rlt,R.drawable.p43rtb,R.drawable.p44},
+            {R.drawable.p51b,R.drawable.p51l,R.drawable.p51t,R.drawable.p51r,R.drawable.p52bt,R.drawable.p52lb,R.drawable.p52lt,R.drawable.p52rb,R.drawable.p52rl,R.drawable.p52rt,R.drawable.p53lbt,R.drawable.p53rlb,R.drawable.p53rlt,R.drawable.p53rtb,R.drawable.p54},
+    };
+    Integer[] normalChipset = {0,R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5};
     int[][] gridState = new int[15][8];
     int[][] shapeState = new int[15][8];
+    int score = 0;
 
     User user = new User(3,1);   // Single Pattern Object
 
@@ -52,28 +64,25 @@ public class MainActivity extends AppCompatActivity {
     Button rotateBt,rightBt,leftBt,downBt,resetBt;
     Controller mController;
 
-    static {
+    /*static {
         System.loadLibrary("7segment");
         System.loadLibrary("lcd");
         System.loadLibrary("pbutton");
-        System.loadLibrary("dotmatrix");
-        System.loadLibrary("led");
+        //System.loadLibrary("dotmatrix");
     }
 
     public native int SSegmentWrite(int data);
     public native int LcdWrite(String first, String second);
-    public native int PbuttonRead();
-    public native int DotWrite(int data);
-    public native int LedWrite(int data);
+    public native int PbuttonRead();*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        //setContentView(R.layout.activity_main);
-        setContentView(R.layout.board_main);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setContentView(R.layout.board_main);
+        //setContentView(R.layout.board_main);
 
         fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction1 = fragmentManager.beginTransaction();
@@ -91,15 +100,22 @@ public class MainActivity extends AppCompatActivity {
         mRenderHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                rendering(false);
+                if(msg.what == 0)
+                    rendering(false);
+                else if(msg.what == 1)
+                    rendering(true);
             }
         };
-        mStackHandler = new Handler() {
+
+        tScore = (TextView)findViewById(R.id.score);
+
+        /*mStackHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
+                ifmsg.what
                 rendering(true);
             }
-        };
+        };*/
 
         //---------- Control initialization ------------------------------------------
         mController = new Controller(this,user);
@@ -187,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
                 gridState[user.getSubY()][user.getSubX()] = 6;
         }
 
+        //int shape = 0;
         for(int i=2;i<14;i++)   // render current graphic
             for(int j=1;j<7;j++){
                 switch (gridState[i][j]){
@@ -194,19 +211,21 @@ public class MainActivity extends AppCompatActivity {
                         grid[i][j].setImageResource(R.drawable.non);
                         break;
                     case 1:
-                        grid[i][j].setImageResource(R.drawable.p1);
+                        grid[i][j].setImageResource(puyoShapeCheck(gridState[i][j],i,j));
                         break;
                     case 2:
-                        grid[i][j].setImageResource(R.drawable.p2);
+                        grid[i][j].setImageResource(puyoShapeCheck(gridState[i][j],i,j));
                         break;
                     case 3:
-                        grid[i][j].setImageResource(R.drawable.p3);
+                        grid[i][j].setImageResource(puyoShapeCheck(gridState[i][j],i,j));
                         break;
                     case 4:
-                        grid[i][j].setImageResource(R.drawable.p4);
+                        //grid[i][j].setImageResource(R.drawable.p4);
+                        grid[i][j].setImageResource(puyoShapeCheck(gridState[i][j],i,j));
                         break;
                     case 5:
-                        grid[i][j].setImageResource(R.drawable.p5);
+                        //grid[i][j].setImageResource(R.drawable.p5);
+                        grid[i][j].setImageResource(puyoShapeCheck(gridState[i][j],i,j));
                         break;
                     case 6:
                         if(i == user.getUserY() && j == user.getUserX() && user.userCentColor == 1 )
@@ -232,17 +251,17 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
             }
-
-
+        tScore.setText(score+"");
     }
 
     public void stacking(){
-        boolean stack = true;
-        int targetX=0,targetY=0;
         rightBt.setOnClickListener(null);
         leftBt.setOnClickListener(null);
         rotateBt.setOnClickListener(null);
         downBt.setOnClickListener(null);
+
+        boolean stack = true;
+        int targetX=0,targetY=0;
 
         while(stack) {
             stack = false;
@@ -254,7 +273,6 @@ public class MainActivity extends AppCompatActivity {
                         targetY = i;
                     }
 
-            //melt down
             if(stack && targetY >=2) {
                 for (int i = targetY; i < 13; i++) {
                     if(gridState[i+1][targetX] ==0) { //아래가 비어있다면
@@ -266,12 +284,11 @@ public class MainActivity extends AppCompatActivity {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        mStackHandler.sendEmptyMessage(0);
+                        mRenderHandler.sendEmptyMessage(1);
                     }
                 }
             }
         }
-
         rotateBt.setOnClickListener(mController);
         leftBt.setOnClickListener(mController);
         rightBt.setOnClickListener(mController);
@@ -279,11 +296,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkClear(){
-        rightBt.setOnClickListener(null);
-        leftBt.setOnClickListener(null);
-        rotateBt.setOnClickListener(null);
-        downBt.setOnClickListener(null);
-
         for(int i=0;i<15;i++)  //  탐색여부 배열 초기화
             for(int j=0;j<8;j++)
                 serchTable[i][j] = 0;
@@ -299,16 +311,19 @@ public class MainActivity extends AppCompatActivity {
                     bfs(gridState[y][x]);
 
                     if(delete.size() >=4) {
-                        for (int d = 0; d < delete.size(); d++) {
+                        score += delete.size()*100;
+                        for (int d = 0; d < delete.size(); d++)
                             gridState[delete.get(d).y][delete.get(d).x] = 0; // 스택값 제거
-                            stacking();
-                        }
+                        stacking();
                         checkClear(); // 재귀로 연쇄 제거
                     }
                 }
             }
         }
-
+        rightBt.setOnClickListener(null);
+        leftBt.setOnClickListener(null);
+        rotateBt.setOnClickListener(null);
+        downBt.setOnClickListener(null);
         rotateBt.setOnClickListener(mController);
         leftBt.setOnClickListener(mController);
         rightBt.setOnClickListener(mController);
@@ -327,10 +342,56 @@ public class MainActivity extends AppCompatActivity {
             queue.add(new Point(p.x-1,p.y));
         if((p.y-1) >=2 && gridState[p.y-1][p.x] == color && serchTable[p.y-1][p.x] == 0)  //위
             queue.add(new Point(p.x,p.y-1));
-        if((p.x+1) <= 7 && gridState[p.y][p.x+1] == color && serchTable[p.y][p.x+1] == 0) //오른쪽
+        if((p.x+1) < 7 && gridState[p.y][p.x+1] == color && serchTable[p.y][p.x+1] == 0) //오른쪽
             queue.add(new Point(p.x+1,p.y));
-        if((p.y+1) <=14 && gridState[p.y+1][p.x] ==color && serchTable[p.y+1][p.x] == 0) //아래
+        if((p.y+1) <14 && gridState[p.y+1][p.x] ==color && serchTable[p.y+1][p.x] == 0) //아래
             queue.add(new Point(p.x,p.y+1));
         bfs(color);
+    }
+
+    Integer puyoShapeCheck(int color,int y,int x){
+        boolean r=false,l=false,b=false,t=false;
+        if(gridState[y-1][x] == color)
+            t=true;
+        if(gridState[y+1][x] == color)
+            b =true;
+        if(gridState[y][x-1] == color)
+            l = true;
+        if(gridState[y][x+1] == color)
+            r = true;
+
+        //b,l,t,r,bt,lb,lt,rb,rl,rt,lbt,rlb,rlt,rtb,all
+        if(b && l==false && t==false && r==false)
+            return imageChipset[color][0];
+        else if(l && r==false && t==false && b==false)
+            return imageChipset[color][1];
+        else if(t && l==false && r==false && b==false)
+            return imageChipset[color][2];
+        else if(r && l==false && t==false && b==false)
+            return imageChipset[color][3];
+        else if(b && t && l==false && r==false)
+            return imageChipset[color][4];
+        else if(l && b && t==false && r==false)
+            return imageChipset[color][5];
+        else if(l && t && b==false && r==false)
+            return imageChipset[color][6];
+        else if(r && b && t==false && l==false)
+            return imageChipset[color][7];
+        else if(r && l && t==false && b==false)
+            return imageChipset[color][8];
+        else if(r && t && b==false && l==false)
+            return imageChipset[color][9];
+        else if(l && b && t && r==false)
+            return imageChipset[color][10];
+        else if(r && l && b && t==false)
+            return imageChipset[color][11];
+        else if(r && l && t && b==false)
+            return imageChipset[color][12];
+        else if(r && b && t && l==false)
+            return imageChipset[color][13];
+        else if(r && b && t && l)
+            return imageChipset[color][14];
+
+        return normalChipset[color];
     }
 }
