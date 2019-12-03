@@ -1,4 +1,4 @@
-package com.example.puyopuzzle;
+package com.example.PuyoPuzzle;
 
 import android.os.Bundle;
 import android.app.Fragment;

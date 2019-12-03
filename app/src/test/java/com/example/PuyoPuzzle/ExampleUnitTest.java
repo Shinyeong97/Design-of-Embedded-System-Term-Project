@@ -1,4 +1,4 @@
-package com.example.puyopuzzle;
+package com.example.PuyoPuzzle;
 
 import org.junit.Test;
 

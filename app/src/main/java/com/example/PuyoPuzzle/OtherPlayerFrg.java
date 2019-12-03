@@ -1,7 +1,6 @@
-package com.example.puyopuzzle;
+package com.example.PuyoPuzzle;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
