@@ -1,4 +1,4 @@
-package com.example.PuyoPuzzle;
+package com.example.puyopuzzle;
 
 import android.os.Bundle;
 import android.app.Fragment;
@@ -23,7 +23,7 @@ public class OtherPlayerFrg2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v= inflater.inflate(R.layout.other2, container, false);
 
-        mHandler = new Handler() {
+         mHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 t2 = (TextView)v.findViewById(R.id.thread3);

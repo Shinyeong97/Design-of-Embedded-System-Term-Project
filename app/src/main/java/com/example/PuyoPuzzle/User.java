@@ -1,4 +1,4 @@
-package com.example.PuyoPuzzle;
+package com.example.puyopuzzle;
 
 public class User{
     private int userX = 3, userY = 1;

@@ -1,7 +1,7 @@
-package com.example.PuyoPuzzle;
+package com.example.puyopuzzle;
 import android.view.View;
 
-public class Controller implements View.OnClickListener {
+public class Controller implements View.OnClickListener{
     MainActivity mainPointer;
     User user;
     static final int TOP = 0 ,RIGHT = 1, BOTTOM = 2, LEFT = 3;
@@ -10,23 +10,49 @@ public class Controller implements View.OnClickListener {
     Thread pushClick;
     int button_num =0;
 
-
     Controller(MainActivity pm, User pu){
         mainPointer = pm;
         user = pu;
 
-        pushClick = new PushThread();
-        pushClick.start();
+        //pushClick = new PushThread(); //--------------------- board
+        //pushClick.start(); //--------------------- board
     }
     @Override
     public void onClick(View v) {
+        int color_tmp;
         switch (v.getId()) {
             case R.id.rotate:
-                if(user.subState == BOTTOM && mainPointer.gridState[user.getSubY()][user.getSubX()-1] !=0)  // rotate 광클 버그 예외처리
+                if(user.subState == BOTTOM && mainPointer.gridState[user.getUserY()][user.getUserX()-1] !=0) {
+                    if( mainPointer.gridState[user.getUserY()][user.getUserX()+1] ==0 ) {  //튕겨나옴
+                        user.setUserX(user.getUserX()+1);
+                        user.subState+=1;
+                        user.subState%=4;
+                        user.refreshSub();
+                    }
+                    else if(mainPointer.gridState[user.getUserY()][user.getUserX()+1] !=0) { // 꼼짝못함
+                        color_tmp = user.userCentColor;
+                        user.userCentColor = user.userSubColor;
+                        user.userSubColor = color_tmp;
+                    }
+                    mainPointer.rendering(false);
                     break;
-                if(user.subState == TOP && mainPointer.gridState[user.getSubY()][user.getSubX()+1] !=0)     // rotate 광클 버그 예외처리
+                }
+                if(user.subState == TOP && mainPointer.gridState[user.getUserY()][user.getUserX()+1] !=0) {
+                    if( mainPointer.gridState[user.getUserY()][user.getUserX()-1] ==0 ) {  //튕겨나옴
+                        user.setUserX(user.getUserX()-1);
+                        user.subState+=1;
+                        user.subState%=4;
+                        user.refreshSub();
+                    }
+                    else if(mainPointer.gridState[user.getUserY()][user.getUserX()-1] !=0) { //꼼짝못함
+                        color_tmp = user.userCentColor;
+                        user.userCentColor = user.userSubColor;
+                        user.userSubColor = color_tmp;
+                    }
+                    mainPointer.rendering(false);
                     break;
-                if(user.subState == RIGHT && mainPointer.gridState[user.getSubY()+1][user.getSubX()] !=0)   // rotate 광클 버그 예외처리
+                }
+                if(user.subState == RIGHT && mainPointer.gridState[user.getUserY()+1][user.getUserX()] !=0)
                     break;
                 user.subState+=1;
                 user.subState%=4;
@@ -63,18 +89,44 @@ public class Controller implements View.OnClickListener {
     }
 
     private class PushThread extends Thread{
+        int color_tmp;
         @Override
         public void run() {
             while (true) {
-                button_num = mainPointer.PbuttonRead();
-                //mHandler.sendEmptyMessage(0);
+                //button_num = mainPointer.PbuttonRead();   //--------------------- board
                 switch (button_num) {
                     case 2:
-                        if(user.subState == BOTTOM && mainPointer.gridState[user.getSubY()][user.getSubX()-1] !=0)  // rotate 광클 버그 예외처리
+                        if(user.subState == BOTTOM && mainPointer.gridState[user.getUserY()][user.getUserX()-1] !=0) {
+                            if( mainPointer.gridState[user.getUserY()][user.getUserX()+1] ==0 ) {  //튕겨나옴
+                                user.setUserX(user.getUserX()+1);
+                                user.subState+=1;
+                                user.subState%=4;
+                                user.refreshSub();
+                            }
+                            else if(mainPointer.gridState[user.getUserY()][user.getUserX()+1] !=0) { // 꼼짝못함
+                                color_tmp = user.userCentColor;
+                                user.userCentColor = user.userSubColor;
+                                user.userSubColor = color_tmp;
+                            }
+                            mainPointer.rendering(false);
                             break;
-                        if(user.subState == TOP && mainPointer.gridState[user.getSubY()][user.getSubX()+1] !=0)     // rotate 광클 버그 예외처리
+                        }
+                        if(user.subState == TOP && mainPointer.gridState[user.getUserY()][user.getUserX()+1] !=0) {
+                            if( mainPointer.gridState[user.getUserY()][user.getUserX()-1] ==0 ) {  //튕겨나옴
+                                user.setUserX(user.getUserX()-1);
+                                user.subState+=1;
+                                user.subState%=4;
+                                user.refreshSub();
+                            }
+                            else if(mainPointer.gridState[user.getUserY()][user.getUserX()-1] !=0) { //꼼짝못함
+                                color_tmp = user.userCentColor;
+                                user.userCentColor = user.userSubColor;
+                                user.userSubColor = color_tmp;
+                            }
+                            mainPointer.rendering(false);
                             break;
-                        if(user.subState == RIGHT && mainPointer.gridState[user.getSubY()+1][user.getSubX()] !=0)   // rotate 광클 버그 예외처리
+                        }
+                        if(user.subState == RIGHT && mainPointer.gridState[user.getUserY()+1][user.getUserX()] !=0)
                             break;
                         user.subState+=1;
                         user.subState%=4;
