@@ -1,0 +1,43 @@
+{
+  "buildFiles": [
+    "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\ndk\\20.1.5948944\\build\\cmake\\platforms.cmake",
+    "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\ndk\\20.1.5948944\\build\\cmake\\android.toolchain.cmake",
+    "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\release\\arm64-v8a\" clean"
+  ],
+  "buildTargetsCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\release\\arm64-v8a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "led-Release-arm64-v8a": {
+      "artifactName": "led",
+      "buildCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\release\\arm64-v8a\" led",
+      "abi": "arm64-v8a",
+      "output": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\release\\obj\\arm64-v8a\\libled.so"
+    },
+    "dotmatrix-Release-arm64-v8a": {
+      "artifactName": "dotmatrix",
+      "buildCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\release\\arm64-v8a\" dotmatrix",
+      "abi": "arm64-v8a",
+      "output": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\release\\obj\\arm64-v8a\\libdotmatrix.so"
+    },
+    "7segment-Release-arm64-v8a": {
+      "artifactName": "7segment",
+      "buildCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\release\\arm64-v8a\" 7segment",
+      "abi": "arm64-v8a",
+      "output": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\release\\obj\\arm64-v8a\\lib7segment.so"
+    },
+    "lcd-Release-arm64-v8a": {
+      "artifactName": "lcd",
+      "buildCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\release\\arm64-v8a\" lcd",
+      "abi": "arm64-v8a",
+      "output": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\release\\obj\\arm64-v8a\\liblcd.so"
+    },
+    "pbutton-Release-arm64-v8a": {
+      "artifactName": "pbutton",
+      "buildCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\release\\arm64-v8a\" pbutton",
+      "abi": "arm64-v8a",
+      "output": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\release\\obj\\arm64-v8a\\libpbutton.so"
+    }
+  }
+}

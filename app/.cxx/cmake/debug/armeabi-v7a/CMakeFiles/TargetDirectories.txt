@@ -1,0 +1,7 @@
+C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/pbutton.dir
+C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/7segment.dir
+C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/lcd.dir
+C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/dotmatrix.dir
+C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/led.dir
+C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,43 @@
+{
+  "buildFiles": [
+    "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\ndk\\20.1.5948944\\build\\cmake\\platforms.cmake",
+    "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\ndk\\20.1.5948944\\build\\cmake\\android.toolchain.cmake",
+    "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\x86\" clean"
+  ],
+  "buildTargetsCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "pbutton-Debug-x86": {
+      "artifactName": "pbutton",
+      "buildCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\x86\" pbutton",
+      "abi": "x86",
+      "output": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\debug\\obj\\x86\\libpbutton.so"
+    },
+    "led-Debug-x86": {
+      "artifactName": "led",
+      "buildCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\x86\" led",
+      "abi": "x86",
+      "output": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\debug\\obj\\x86\\libled.so"
+    },
+    "7segment-Debug-x86": {
+      "artifactName": "7segment",
+      "buildCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\x86\" 7segment",
+      "abi": "x86",
+      "output": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\debug\\obj\\x86\\lib7segment.so"
+    },
+    "lcd-Debug-x86": {
+      "artifactName": "lcd",
+      "buildCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\x86\" lcd",
+      "abi": "x86",
+      "output": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\debug\\obj\\x86\\liblcd.so"
+    },
+    "dotmatrix-Debug-x86": {
+      "artifactName": "dotmatrix",
+      "buildCommand": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\x86\" dotmatrix",
+      "abi": "x86",
+      "output": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\debug\\obj\\x86\\libdotmatrix.so"
+    }
+  }
+}

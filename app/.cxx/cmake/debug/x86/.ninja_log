@@ -1,0 +1,12 @@
+# ninja log v5
+13	323	597061744	CMakeFiles/pbutton.dir/pbutton.c.o	15935e528cae84c3
+19	330	597061744	CMakeFiles/dotmatrix.dir/dotmatrix.c.o	426ac5faedf7bde3
+8	335	597061744	CMakeFiles/7segment.dir/7segment.c.o	a64ada891bda45f
+23	337	597061744	CMakeFiles/led.dir/led.c.o	df0d76b4e6f27468
+1	344	597061744	CMakeFiles/lcd.dir/lcd.c.o	b77ca4028513c454
+325	448	597061744	C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/build/intermediates/cmake/debug/obj/x86/libpbutton.so	9f4b91ea5c0a0ecd
+338	968	597061744	C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/build/intermediates/cmake/debug/obj/x86/libled.so	8239023c598a6512
+344	973	597061744	C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/build/intermediates/cmake/debug/obj/x86/liblcd.so	e13fa1f8154c3fa3
+4	307	597062503	CMakeFiles/dotmatrix.dir/dotmatrix.c.o	426ac5faedf7bde3
+307	425	597062503	C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/build/intermediates/cmake/debug/obj/x86/libdotmatrix.so	a4560076267be354
+425	542	597062503	C:/Users/CAU/Documents/GitHub/Design-of-Embedded-System-Term-Project/app/build/intermediates/cmake/debug/obj/x86/lib7segment.so	5efb1a810f0e950d

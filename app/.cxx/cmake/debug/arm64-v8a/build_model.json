@@ -1,0 +1,72 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project",
+      "sdkFolder": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates",
+      "gradleModulePathName": ":app",
+      "moduleRootFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app",
+      "makeFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\src\\main\\cpp\\CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\.cxx",
+      "cxxFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx",
+      "ndkFolder": "C:\\Users\\CAU\\AppData\\Local\\Android\\Sdk\\ndk\\20.1.5948944",
+      "ndkVersion": "20.1.5948944",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [],
+    "cFlagList": [],
+    "cppFlagsList": [
+      ""
+    ],
+    "variantName": "debug",
+    "soFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\debug\\lib",
+    "objFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\debug\\obj",
+    "jsonFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug",
+    "gradleBuildOutputFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cxx\\debug",
+    "isDebuggableEnabled": true,
+    "validAbiList": [
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "ARM64_V8A",
+  "abiPlatformVersion": 22,
+  "cxxBuildFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\arm64-v8a",
+  "jsonFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\arm64-v8a\\android_gradle_build.json",
+  "gradleBuildOutputFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cxx\\debug\\arm64-v8a",
+  "objFolder": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\build\\intermediates\\cmake\\debug\\obj\\arm64-v8a",
+  "buildCommandFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\arm64-v8a\\build_command.txt",
+  "buildOutputFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\arm64-v8a\\build_output.txt",
+  "modelOutputFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\arm64-v8a\\build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cxx\\debug\\arm64-v8a\\CMakeLists.txt",
+    "toolchainWrapperFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cxx\\debug\\arm64-v8a\\android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cxx\\debug\\arm64-v8a\\build_generation_state.json",
+    "cacheKeyFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cxx\\debug\\arm64-v8a\\compiler_cache_key.json",
+    "compilerCacheUseFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cxx\\debug\\arm64-v8a\\compiler_cache_use.json",
+    "compilerCacheWriteFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cxx\\debug\\arm64-v8a\\compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cxx\\debug\\arm64-v8a\\compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\arm64-v8a\\json_generation_record.json",
+  "compileCommandsJsonFile": "C:\\Users\\CAU\\Documents\\GitHub\\Design-of-Embedded-System-Term-Project\\app\\.cxx\\cmake\\debug\\arm64-v8a\\compile_commands.json"
+}
