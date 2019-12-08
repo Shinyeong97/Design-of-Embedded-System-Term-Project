@@ -2,6 +2,7 @@ package com.example.PuyoPuzzle;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Point;
 import android.os.Handler;
@@ -20,6 +21,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class MainActivity extends AppCompatActivity {
+    static final int TOUCHMODE = 1, BOARDMODE =2;
+    int mode = BOARDMODE;
 
     FragmentManager fragmentManager;
     private static Handler mRenderHandler, mStackHandler;
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Point> delete = new ArrayList<>();
     int [][] serchTable = new int[15][8];
 
+    Intent pIntent;
     // gird setting
     TextView tScore;
     ImageView[][] grid = new ImageView[15][8];
@@ -80,9 +84,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        setContentView(R.layout.board_main);
-        //setContentView(R.layout.board_main);
+        if(mode == TOUCHMODE)
+            setContentView(R.layout.activity_main);
+        if(mode == BOARDMODE) {
+            setContentView(R.layout.board_main);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction1 = fragmentManager.beginTransaction();
@@ -109,42 +116,35 @@ public class MainActivity extends AppCompatActivity {
 
         tScore = (TextView)findViewById(R.id.score);
 
-        /*mStackHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                ifmsg.what
-                rendering(true);
-            }
-        };*/
-
         //---------- Control initialization ------------------------------------------
         mController = new Controller(this,user);
-        rotateBt = (Button)findViewById(R.id.rotate);
-        rightBt = (Button)findViewById(R.id.btright);
-        leftBt = (Button)findViewById(R.id.btleft);
-        downBt = (Button)findViewById(R.id.down);
-        rotateBt.setOnClickListener(mController);
-        leftBt.setOnClickListener(mController);
-        rightBt.setOnClickListener(mController);
-        leftBt.setOnClickListener(mController);
+        if(mode == TOUCHMODE) {
+            rotateBt = (Button) findViewById(R.id.rotate);
+            rightBt = (Button) findViewById(R.id.btright);
+            leftBt = (Button) findViewById(R.id.btleft);
+            downBt = (Button) findViewById(R.id.down);
+            rotateBt.setOnClickListener(mController);
+            leftBt.setOnClickListener(mController);
+            rightBt.setOnClickListener(mController);
+            leftBt.setOnClickListener(mController);
 
-        resetBt = (Button)findViewById(R.id.button2);   // 임시 리셋버튼
-        resetBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (int i=0;i<15;i++)
-                    for(int j=0;j<8;j++) {
-                        if(i!=14) {
-                            if (j == 0 || j == 7)
+            resetBt = (Button) findViewById(R.id.button2);   // 임시 리셋버튼
+            resetBt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for (int i = 0; i < 15; i++)
+                        for (int j = 0; j < 8; j++) {
+                            if (i != 14) {
+                                if (j == 0 || j == 7)
+                                    gridState[i][j] = 7;
+                                else
+                                    gridState[i][j] = 0;
+                            } else
                                 gridState[i][j] = 7;
-                            else
-                                gridState[i][j] = 0;
                         }
-                        else
-                            gridState[i][j] = 7;
-                    }
-            }
-        });
+                }
+            });
+        }
 
         //--------- Game Main Thread ----------------------------
         GameLoop thread = new GameLoop();
@@ -220,11 +220,9 @@ public class MainActivity extends AppCompatActivity {
                         grid[i][j].setImageResource(puyoShapeCheck(gridState[i][j],i,j));
                         break;
                     case 4:
-                        //grid[i][j].setImageResource(R.drawable.p4);
                         grid[i][j].setImageResource(puyoShapeCheck(gridState[i][j],i,j));
                         break;
                     case 5:
-                        //grid[i][j].setImageResource(R.drawable.p5);
                         grid[i][j].setImageResource(puyoShapeCheck(gridState[i][j],i,j));
                         break;
                     case 6:
@@ -255,10 +253,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void stacking(){
-        rightBt.setOnClickListener(null);
-        leftBt.setOnClickListener(null);
-        rotateBt.setOnClickListener(null);
-        downBt.setOnClickListener(null);
+        if(mode == TOUCHMODE) {
+            rightBt.setOnClickListener(null);
+            leftBt.setOnClickListener(null);
+            rotateBt.setOnClickListener(null);
+            downBt.setOnClickListener(null);
+        }
 
         boolean stack = true;
         int targetX=0,targetY=0;
@@ -289,10 +289,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        rotateBt.setOnClickListener(mController);
-        leftBt.setOnClickListener(mController);
-        rightBt.setOnClickListener(mController);
-        leftBt.setOnClickListener(mController);
+        if(mode == TOUCHMODE) {
+            rotateBt.setOnClickListener(mController);
+            leftBt.setOnClickListener(mController);
+            rightBt.setOnClickListener(mController);
+            leftBt.setOnClickListener(mController);
+        }
     }
 
     public void checkClear(){
@@ -320,14 +322,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        rightBt.setOnClickListener(null);
-        leftBt.setOnClickListener(null);
-        rotateBt.setOnClickListener(null);
-        downBt.setOnClickListener(null);
-        rotateBt.setOnClickListener(mController);
-        leftBt.setOnClickListener(mController);
-        rightBt.setOnClickListener(mController);
-        leftBt.setOnClickListener(mController);
+        if(mode == TOUCHMODE) {
+            rightBt.setOnClickListener(null);
+            leftBt.setOnClickListener(null);
+            rotateBt.setOnClickListener(null);
+            downBt.setOnClickListener(null);
+            rotateBt.setOnClickListener(mController);
+            leftBt.setOnClickListener(mController);
+            rightBt.setOnClickListener(mController);
+            leftBt.setOnClickListener(mController);
+        }
     }
 
     private void bfs(int color){
