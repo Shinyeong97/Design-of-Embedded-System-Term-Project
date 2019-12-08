@@ -42,8 +42,8 @@ public class OtherPlayerFrg extends Fragment {
     Integer[] normalChipset = {0,R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5};
     int[][] gridState = new int[15][8];
 
-    int revUserX, revUserY,revUserSubX,revUserSubY;
-    int revUserCentC,revUserSubC;
+    int revUserX=0, revUserY=0,revUserSubX=0,revUserSubY=0;
+    int revUserCentC=0,revUserSubC=0;
 
 
     @Override
@@ -55,12 +55,25 @@ public class OtherPlayerFrg extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v= inflater.inflate(R.layout.other1, container, false);
 
-        //gridState = getActivity().getIntent().getIntArrayExtra("state");
+        for (int i=0;i<15;i++) // State Initialization
+            for(int j=0;j<8;j++) {
+                if(i!=14) {
+                    if (j == 0 || j == 7)
+                        gridState[i][j] = 7;
+                    else
+                        gridState[i][j] = 0;
+                }
+                else
+                    gridState[i][j] = 7;
+            }
+        for(int i=2;i<14;i++)
+            for(int j=1;j<7;j++)
+                grid[i][j] = (ImageView) v.findViewById(gridID[i][j]);
 
         mHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                //rendering(false);
+                rendering(false);
             }
         };
 
@@ -92,7 +105,22 @@ public class OtherPlayerFrg extends Fragment {
     }
 
     public void rendering(boolean stackmode){
-        //gridState = getActivity().getIntent().getIntArrayExtra("state");
+        try { // 데이터 수신부
+            Bundle data = getActivity().getIntent().getExtras();
+            int[] revdata = data.getIntArray("state");
+            int k = 0;
+            for (int i = 0; i < 15; i++)
+                for (int j = 0; j < 8; j++)
+                    gridState[i][j] = revdata[k++];
+            revUserX = data.getInt("userX");
+            revUserY = data.getInt("userY");
+            revUserSubX = data.getInt("subX");
+            revUserSubY = data.getInt("subY");
+            revUserCentC = data.getInt("centC");
+            revUserSubC = data.getInt("subC");
+        }catch(Exception e){
+            //
+        }
 
 
         if(!stackmode) {
@@ -102,7 +130,7 @@ public class OtherPlayerFrg extends Fragment {
                         gridState[i][j] = 0;
 
             if (revUserY >= 0)  // current user position
-                gridState[revUserSubY][revUserSubX] = 6;
+                gridState[revUserY][revUserX] = 6;
             if (revUserY >= 2 && revUserX <= 13)
                 gridState[revUserSubY][revUserSubX] = 6;
         }

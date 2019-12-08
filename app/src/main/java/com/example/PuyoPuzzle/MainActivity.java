@@ -1,5 +1,6 @@
 package com.example.PuyoPuzzle;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     int mode = BOARDMODE;
 
     FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction1,fragmentTransaction2,fragmentTransaction3;
+    Fragment frag1,frag2,frag3;
     private static Handler mRenderHandler, mStackHandler;
     Queue<Point> queue = new LinkedList<Point>();
     ArrayList<Point> delete = new ArrayList<>();
@@ -92,13 +95,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction1 = fragmentManager.beginTransaction();
-        fragmentTransaction1.replace(R.id.frame1, new OtherPlayerFrg()).commit();
-        FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();
-        fragmentTransaction2.replace(R.id.frame2, new OtherPlayerFrg2()).commit();
-        FragmentTransaction fragmentTransaction3 = fragmentManager.beginTransaction();
-        fragmentTransaction3.replace(R.id.frame3, new OtherPlayerFrg3()).commit();
-
+        fragmentTransaction1 = fragmentManager.beginTransaction();
+        fragmentTransaction1.replace(R.id.frame1, new OtherPlayerFrg(),"frag1").commit();
+        fragmentTransaction2 = fragmentManager.beginTransaction();
+        fragmentTransaction2.replace(R.id.frame2, new OtherPlayerFrg2(),"frag2").commit();
+        fragmentTransaction3 = fragmentManager.beginTransaction();
+        fragmentTransaction3.replace(R.id.frame3, new OtherPlayerFrg3(),"frag3").commit();
         //--------------View initialization------------------------------------------
         for(int i=2;i<14;i++)
             for(int j=1;j<7;j++)
@@ -118,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         //---------- Control initialization ------------------------------------------
         mController = new Controller(this,user);
+        leftBt = (Button) findViewById(R.id.btleft);
         if(mode == TOUCHMODE) {
             rotateBt = (Button) findViewById(R.id.rotate);
             rightBt = (Button) findViewById(R.id.btright);
@@ -191,6 +194,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void rendering(boolean stackmode){
+        int[] senddata = new int[120];
+        int k=0;
+        for(int i=0;i<15;i++)
+            for(int j=0;j<8;j++)
+                senddata[k++] = gridState[i][j];
+        Bundle data = new Bundle();
+        data.putIntArray("state",senddata);
+        data.putInt("userX",user.getUserX());
+        data.putInt("userY",user.getUserY());
+        data.putInt("subX",user.getSubX());
+        data.putInt("subY",user.getSubY());
+        data.putInt("centC",user.userCentColor);
+        data.putInt("subC",user.userSubColor);
+        getIntent().putExtras(data);
+
         if(!stackmode) {
             for (int i = 0; i < 14; i++)   // remove post user graphic
                 for (int j = 1; j < 7; j++)
@@ -253,6 +271,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void stacking(){
+        leftBt.setOnClickListener(null);
         if(mode == TOUCHMODE) {
             rightBt.setOnClickListener(null);
             leftBt.setOnClickListener(null);
@@ -322,6 +341,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+        leftBt.setOnClickListener(null);
+        leftBt.setOnClickListener(mController);
         if(mode == TOUCHMODE) {
             rightBt.setOnClickListener(null);
             leftBt.setOnClickListener(null);
