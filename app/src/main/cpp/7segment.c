@@ -43,6 +43,7 @@ JNIEXPORT jint JNICALL Java_com_example_PuyoPuzzle_MainActivity_SSegmentWrite
         return -1;
     }
 
+
     close(fd);
 
     return 0;

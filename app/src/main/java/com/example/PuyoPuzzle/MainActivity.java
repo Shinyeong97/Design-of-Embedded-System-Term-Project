@@ -336,6 +336,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if(delete.size() >=4) {
                         score += delete.size()*100;
+                        SSegmentWrite(score);
                         for (int d = 0; d < delete.size(); d++)
                             gridState[delete.get(d).y][delete.get(d).x] = 0; // 스택값 제거
                         stacking();
