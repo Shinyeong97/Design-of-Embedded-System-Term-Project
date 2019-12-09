@@ -13,7 +13,7 @@
 #include <sys/ioctl.h>
 #include <android/log.h>
 
-JNIEXPORT jint JNICALL
+JNIEXPORT void JNICALL
 Java_com_example_PuyoPuzzle_MainActivity_LedWrite (JNIEnv *jenv, jobject self, jint data){
     int fd;
     unsigned char ret;
@@ -23,13 +23,13 @@ Java_com_example_PuyoPuzzle_MainActivity_LedWrite (JNIEnv *jenv, jobject self, j
 
     if ((data < -1) || (data > 0xff)) {
 //        __android_log_print(ANDROID_LOG_ERROR, "LedWrite", "Out of range! \n");
-        return -1;
+        return;
     }
 
     fd = open("/dev/led", O_RDWR);
     if (fd < 0) {
 //        __android_log_print(ANDROID_LOG_ERROR, "LedWrite", "Device open error : /dev/led\n");
-        return -1;
+        return;
     }
 
     if (data == -1) {
@@ -51,5 +51,5 @@ Java_com_example_PuyoPuzzle_MainActivity_LedWrite (JNIEnv *jenv, jobject self, j
 
     close(fd);
 
-    return 0;
+    return;
 }

@@ -20,7 +20,7 @@
 #define LCD_MAGIC               0xBD
 #define LCD_SET_CURSOR_POS     _IOW(LCD_MAGIC, 0, int)
 
-JNIEXPORT jint JNICALL Java_com_example_PuyoPuzzle_MainActivity_LcdWrite
+JNIEXPORT void JNICALL Java_com_example_PuyoPuzzle_MainActivity_LcdWrite
         (JNIEnv *jenv, jobject self, jstring first, jstring second){
     int fd, pos;
 
@@ -29,7 +29,7 @@ JNIEXPORT jint JNICALL Java_com_example_PuyoPuzzle_MainActivity_LcdWrite
     fd = open("/dev/lcd", O_WRONLY);
     if (fd < 0) {
         //__android_log_print(ANDROID_LOG_ERROR, "LcdWrite", "Device open error : /dev/lcd\n");
-        return -1;
+        return;
     }
 
     const char *firstString = (*jenv)->GetStringUTFChars(jenv, first, 0);
@@ -48,5 +48,5 @@ JNIEXPORT jint JNICALL Java_com_example_PuyoPuzzle_MainActivity_LcdWrite
 
     close(fd);
 
-    return 0;
+    return;
 }

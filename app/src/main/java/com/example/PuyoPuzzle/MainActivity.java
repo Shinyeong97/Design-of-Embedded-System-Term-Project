@@ -79,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("dotmatrix");
     }
 
-    public native int SSegmentWrite(int data);
-    public native int LcdWrite(String first, String second);
-    public native int LedWrite(int data);
-    public native int DotWrite(int data);
+    public native void SSegmentWrite(int data);
+    public native void LcdWrite(String first, String second);
+    public native void LedWrite(int data);
+    public native void DotWrite(int data);
     public native int PbuttonRead();
 
     @Override
