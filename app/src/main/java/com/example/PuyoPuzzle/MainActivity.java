@@ -288,7 +288,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
             }
-        tScore.setText(score+"");
+        try {
+            tScore.setText("Score :"+score);
+        }catch (Exception e){}
         //nextPuyo preview
         nextImg11.setImageResource(normalChipset[user.nextBuffer[0][1]]);
         nextImg12.setImageResource(normalChipset[user.nextBuffer[0][0]]);
