@@ -9,6 +9,7 @@ import android.graphics.Point;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     // gird setting
     TextView tScore;
+    ImageView nextImg11,nextImg12,nextImg21,nextImg22,gameoverimg;
     ImageView[][] grid = new ImageView[15][8];
     Integer[][] gridID = {{0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0},
@@ -60,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
     };
     Integer[] normalChipset = {0,R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5};
     int[][] gridState = new int[15][8];
-    int[][] shapeState = new int[15][8];
     int score = 0;
+    boolean gameOver = false;
 
     User user = new User(3,1);   // Single Pattern Object
 
@@ -118,37 +120,43 @@ public class MainActivity extends AppCompatActivity {
         };
 
         tScore = (TextView)findViewById(R.id.score);
+        nextImg11 = (ImageView)findViewById(R.id.nextpuyo11);
+        nextImg12 = (ImageView)findViewById(R.id.nextpuyo12);
+        nextImg21 = (ImageView)findViewById(R.id.nextpuyo21);
+        nextImg22 = (ImageView)findViewById(R.id.nextpuyo22);
+        gameoverimg = (ImageView)findViewById(R.id.gameover);
 
         //---------- Control initialization ------------------------------------------
         mController = new Controller(this,user);
-        leftBt = (Button) findViewById(R.id.btleft);
         if(mode == TOUCHMODE) {
             rotateBt = (Button) findViewById(R.id.rotate);
             rightBt = (Button) findViewById(R.id.btright);
+            leftBt = (Button) findViewById(R.id.btleft);
             leftBt = (Button) findViewById(R.id.btleft);
             downBt = (Button) findViewById(R.id.down);
             rotateBt.setOnClickListener(mController);
             leftBt.setOnClickListener(mController);
             rightBt.setOnClickListener(mController);
             leftBt.setOnClickListener(mController);
-
-            resetBt = (Button) findViewById(R.id.button2);   // 임시 리셋버튼
-            resetBt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    for (int i = 0; i < 15; i++)
-                        for (int j = 0; j < 8; j++) {
-                            if (i != 14) {
-                                if (j == 0 || j == 7)
-                                    gridState[i][j] = 7;
-                                else
-                                    gridState[i][j] = 0;
-                            } else
-                                gridState[i][j] = 7;
-                        }
-                }
-            });
         }
+
+        resetBt = (Button) findViewById(R.id.button2);   // 임시 리셋버튼
+        resetBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 0; i < 15; i++)
+                    for (int j = 0; j < 8; j++) {
+                        if (i != 14) {
+                            if (j == 0 || j == 7)
+                                gridState[i][j] = 7;
+                            else
+                                gridState[i][j] = 0;
+                        } else
+                            gridState[i][j] = 7;
+                    }
+                gameOver = false;
+            }
+        });
 
         //--------- Game Main Thread ----------------------------
         LcdWrite("1-player mode", "player1");       //----------------- 수정 요망!!!!!
@@ -175,6 +183,14 @@ public class MainActivity extends AppCompatActivity {
 
         public void run() {
             while (true) {
+                if((gridState[3][3] != 0 && gridState[3][3] !=6) && (gridState[2][3] != 0 && gridState[2][3] !=6)){   // 사망
+                    if(gameOver!=true)
+                        DotWrite(-2);
+                    gameOver = true;
+                    mRenderHandler.sendEmptyMessage(0);
+                    continue;
+                }
+
                 if(!mController.CollisionCheck(mController.CMD_DOWN,user.getUserX(),user.getUserY()+1,user.getSubX(),user.getSubY()+1)){
                     user.setUserY(user.getUserY()+1);
                     user.refreshSub();
@@ -198,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void rendering(boolean stackmode){
+        //data send to another user
         int[] senddata = new int[120];
         int k=0;
         for(int i=0;i<15;i++)
@@ -272,10 +289,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         tScore.setText(score+"");
+        //nextPuyo preview
+        nextImg11.setImageResource(normalChipset[user.nextBuffer[0][1]]);
+        nextImg12.setImageResource(normalChipset[user.nextBuffer[0][0]]);
+        nextImg21.setImageResource(normalChipset[user.nextBuffer[1][1]]);
+        nextImg22.setImageResource(normalChipset[user.nextBuffer[1][0]]);
+
+        if(gameOver)
+            gameoverimg.setVisibility(View.VISIBLE);
+        else
+            gameoverimg.setVisibility(View.INVISIBLE);
     }
 
     public void stacking(){
-        leftBt.setOnClickListener(null);
         if(mode == TOUCHMODE) {
             rightBt.setOnClickListener(null);
             leftBt.setOnClickListener(null);
@@ -301,7 +327,6 @@ public class MainActivity extends AppCompatActivity {
                     if(gridState[i+1][targetX] ==0) { //아래가 비어있다면
                         for(int j = i+1;j>=2;j--)
                             gridState[j][targetX] = gridState[j - 1][targetX]; //흘러내린다.
-
                         try {
                             Thread.sleep(100);
                         } catch (InterruptedException e) {
@@ -337,12 +362,6 @@ public class MainActivity extends AppCompatActivity {
 
                     if(delete.size() >=4) {
                         score += delete.size();
-                        // Thread 함수 ------------------------------------------------------------------------------------
-                        // 7 segment, led, dot 가 순서대로 실행됨
-                        // 동시에 실행되도록
-//                        SSegmentWrite(score);
-//                        LedWrite(-1);       // 반짝반짝 효과
-//                        DotWrite(-3);       // 득점 문구 출력
                         Thread ssegmentTread = new Thread(){
                             public void run(){
                                 SSegmentWrite(score);
@@ -358,9 +377,9 @@ public class MainActivity extends AppCompatActivity {
                                 DotWrite(-3);
                             }
                         };
-                        ssegmentTread.run();
-                        ledTread.run();
-                        dotTread.run();
+                        ssegmentTread.start();
+                        ledTread.start();
+                        dotTread.start();
                         for (int d = 0; d < delete.size(); d++)
                             gridState[delete.get(d).y][delete.get(d).x] = 0; // 스택값 제거
                         stacking();
@@ -369,8 +388,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        leftBt.setOnClickListener(null);
-        leftBt.setOnClickListener(mController);
         if(mode == TOUCHMODE) {
             rightBt.setOnClickListener(null);
             leftBt.setOnClickListener(null);
