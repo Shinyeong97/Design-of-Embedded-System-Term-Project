@@ -34,22 +34,22 @@ Java_com_example_PuyoPuzzle_MainActivity_LedWrite (JNIEnv *jenv, jobject self, j
 
     if (data == -1) {
         ret = write(fd, &b1, 1);
-        usleep(1000 * 100);
+        usleep(1000 * 200);
         ret = write(fd, &b2, 1);
-        usleep(1000 * 100);
+        usleep(1000 * 200);
         ret = write(fd, &b1, 1);
-        usleep(1000 * 100);
+        usleep(1000 * 200);
         ret = write(fd, &b2, 1);
-        usleep(1000 * 100);
+        usleep(1000 * 200);
         ret = write(fd, &zero, 1);
     }
     else {
         ret = write(fd, &data, 1);
-        usleep(1000 * 100);
+        usleep(1000 * 200);
         ret = write(fd, &zero, 1);
-        usleep(1000 * 100);
+        usleep(1000 * 200);
         ret = write(fd, &data, 1);
-        usleep(1000 * 100);
+        usleep(1000 * 200);
         ret = write(fd, &zero, 1);
     }
 
