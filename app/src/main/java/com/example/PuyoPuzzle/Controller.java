@@ -14,8 +14,8 @@ public class Controller implements View.OnClickListener{
         mainPointer = pm;
         user = pu;
 
-        //pushClick = new PushThread(); //--------------------- board
-        //pushClick.start(); //--------------------- board
+        pushClick = new PushThread(); //--------------------- board
+        pushClick.start(); //--------------------- board
     }
     @Override
     public void onClick(View v) {
@@ -93,7 +93,7 @@ public class Controller implements View.OnClickListener{
         @Override
         public void run() {
             while (true) {
-                //button_num = mainPointer.PbuttonRead();   //--------------------- board
+                button_num = mainPointer.PbuttonRead();   //--------------------- board
                 switch (button_num) {
                     case 2:
                         if(user.subState == BOTTOM && mainPointer.gridState[user.getUserY()][user.getUserX()-1] !=0) {

@@ -71,16 +71,19 @@ public class MainActivity extends AppCompatActivity {
     Button rotateBt,rightBt,leftBt,downBt,resetBt;
     Controller mController;
 
-    /*static {
+    static {
         System.loadLibrary("7segment");
         System.loadLibrary("lcd");
+        System.loadLibrary("led");
         System.loadLibrary("pbutton");
-        //System.loadLibrary("dotmatrix");
+        System.loadLibrary("dotmatrix");
     }
 
     public native int SSegmentWrite(int data);
     public native int LcdWrite(String first, String second);
-    public native int PbuttonRead();*/
+    public native int LedWrite(int data);
+    public native int DotWrite(int data);
+    public native int PbuttonRead();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
