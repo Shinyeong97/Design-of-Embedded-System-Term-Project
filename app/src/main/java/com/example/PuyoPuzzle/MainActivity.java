@@ -271,6 +271,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         tScore.setText(score+"");
+        LcdWrite("1-player mode", "player1");       //----------------- 수정 요망!!!!!
     }
 
     public void stacking(){
@@ -335,8 +336,10 @@ public class MainActivity extends AppCompatActivity {
                     bfs(gridState[y][x]);
 
                     if(delete.size() >=4) {
-                        score += delete.size()*100;
+                        score += delete.size();
                         SSegmentWrite(score);
+                        LedWrite(-1);       // 반짝반짝 효과
+                        DotWrite(-3);       // 득점 문구 출력
                         for (int d = 0; d < delete.size(); d++)
                             gridState[delete.get(d).y][delete.get(d).x] = 0; // 스택값 제거
                         stacking();
