@@ -151,6 +151,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //--------- Game Main Thread ----------------------------
+        LcdWrite("1-player mode", "player1");       //----------------- 수정 요망!!!!!
+        LedWrite(0);
+        SSegmentWrite(0);
         GameLoop thread = new GameLoop();
         thread.start();
     }
@@ -269,7 +272,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         tScore.setText(score+"");
-        LcdWrite("1-player mode", "player1");       //----------------- 수정 요망!!!!!
     }
 
     public void stacking(){
