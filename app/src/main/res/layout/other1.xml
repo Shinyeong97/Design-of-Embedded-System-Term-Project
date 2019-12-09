@@ -42,13 +42,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:background="#fff">
+                android:background="#7b4158">
 
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView"
@@ -96,8 +95,7 @@
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView7"
@@ -145,8 +143,7 @@
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView13"
@@ -194,8 +191,7 @@
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView19"
@@ -243,8 +239,7 @@
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView25"
@@ -292,8 +287,7 @@
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView31"
@@ -341,8 +335,7 @@
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView37"
@@ -390,8 +383,7 @@
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView43"
@@ -439,8 +431,7 @@
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView49"
@@ -488,8 +479,7 @@
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView55"
@@ -537,8 +527,7 @@
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView61"
@@ -586,8 +575,7 @@
                 <TableRow
                     android:layout_width="120dp"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:background="#555">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageView67"
