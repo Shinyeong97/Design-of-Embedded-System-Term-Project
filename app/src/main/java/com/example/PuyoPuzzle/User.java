@@ -14,8 +14,8 @@ public class User{
         userY = startYbuffer;
         subX = startX;
         subY = startYbuffer-1;
-        userCentColor = 1;
-        userSubColor = 2;
+        userCentColor = (int)(Math.random() * 5)+1;
+        userSubColor = (int)(Math.random() * 5)+1;
 
         //Buffer Initialization
         nextBuffer[0][0] = (int)(Math.random() * 4)+1;
@@ -79,7 +79,7 @@ public class User{
         userSubColor = nextBuffer[0][1];
         nextBuffer[0][0] = nextBuffer[1][0];
         nextBuffer[0][1] = nextBuffer[1][1];
-        nextBuffer[1][0] = (int)(Math.random() * 4)+1;  // new buffer
+        nextBuffer[1][0] = (int)(Math.random() * 5)+1;  // new buffer
         nextBuffer[1][1] = (int)(Math.random() * 5)+1;  // new buffer
     }
 }

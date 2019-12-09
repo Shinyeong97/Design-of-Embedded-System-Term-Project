@@ -27,13 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction1,fragmentTransaction2,fragmentTransaction3;
-    Fragment frag1,frag2,frag3;
-    private static Handler mRenderHandler, mStackHandler;
+    private static Handler mRenderHandler;
     Queue<Point> queue = new LinkedList<Point>();
     ArrayList<Point> delete = new ArrayList<>();
     int [][] serchTable = new int[15][8];
 
-    Intent pIntent;
     // gird setting
     TextView tScore;
     ImageView[][] grid = new ImageView[15][8];
@@ -343,6 +341,24 @@ public class MainActivity extends AppCompatActivity {
 //                        SSegmentWrite(score);
 //                        LedWrite(-1);       // 반짝반짝 효과
 //                        DotWrite(-3);       // 득점 문구 출력
+                        Thread ssegmentTread = new Thread(){
+                            public void run(){
+                                SSegmentWrite(score);
+                            }
+                        };
+                        Thread ledTread = new Thread(){
+                            public void run(){
+                                LedWrite(-1);
+                            }
+                        };
+                        Thread dotTread = new Thread(){
+                            public void run(){
+                                DotWrite(-3);
+                            }
+                        };
+                        ssegmentTread.run();
+                        ledTread.run();
+                        dotTread.run();
                         for (int d = 0; d < delete.size(); d++)
                             gridState[delete.get(d).y][delete.get(d).x] = 0; // 스택값 제거
                         stacking();
