@@ -297,10 +297,20 @@ public class MainActivity extends AppCompatActivity {
         nextImg21.setImageResource(normalChipset[user.nextBuffer[1][1]]);
         nextImg22.setImageResource(normalChipset[user.nextBuffer[1][0]]);
 
-        if(gameOver)
+        if(gameOver) {
             gameoverimg.setVisibility(View.VISIBLE);
+            //finishActivity(0);
+            //Handler hd = new Handler();
+            //hd.postDelayed(new splash(), 5000);
+        }
         else
             gameoverimg.setVisibility(View.INVISIBLE);
+    }
+
+    private class splash implements Runnable{
+        public void run(){
+            finishActivity(0);
+        }
     }
 
     public void stacking(){
