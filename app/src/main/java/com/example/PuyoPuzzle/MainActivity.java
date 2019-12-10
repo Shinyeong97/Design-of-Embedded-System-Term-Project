@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -299,6 +300,9 @@ public class MainActivity extends AppCompatActivity {
 
         if(gameOver) {
             gameoverimg.setVisibility(View.VISIBLE);
+            SSegmentWrite(0);
+            LcdWrite("", "");
+
             //finishActivity(0);
             //Handler hd = new Handler();
             //hd.postDelayed(new splash(), 5000);
