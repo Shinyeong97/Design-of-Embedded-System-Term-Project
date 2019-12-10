@@ -75,6 +75,7 @@ Java_com_example_PuyoPuzzle_MainActivity_DotWrite (JNIEnv *jenv, jobject self, j
             // data == -5 이면 불모양 출력
         else if (data == -5) {
             ioctl(fd, DOTM_FIRE, NULL, _IOC_SIZE(DOTM_FIRE));
+            ioctl(fd, DOTM_FIRE, NULL, _IOC_SIZE(DOTM_FIRE));
             ioctl(fd, DOTM_SET_CLEAR, NULL, _IOC_SIZE(DOTM_SET_CLEAR));
         }
 
