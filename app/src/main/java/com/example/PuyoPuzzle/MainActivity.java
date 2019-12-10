@@ -306,8 +306,8 @@ public class MainActivity extends AppCompatActivity {
             LcdWrite("", "");
 
             //finishActivity(0);
-            //Handler hd = new Handler();
-            //hd.postDelayed(new splash(), 5000);
+            Handler hd = new Handler();
+            hd.postDelayed(new splash(), 5000);
         }
         else
             gameoverimg.setVisibility(View.INVISIBLE);
@@ -315,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
 
     private class splash implements Runnable{
         public void run(){
-            finishActivity(0);
+            finish();
         }
     }
 
