@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                         DotWrite(-2);
                     gameOver = true;
                     mRenderHandler.sendEmptyMessage(0);
-                    continue;
+//                    continue;
                 }
 
                 if(!mController.CollisionCheck(mController.CMD_DOWN,user.getUserX(),user.getUserY()+1,user.getSubX(),user.getSubY()+1)){
@@ -293,10 +293,12 @@ public class MainActivity extends AppCompatActivity {
             tScore.setText("Score :"+score);
         }catch (Exception e){}
         //nextPuyo preview
-        nextImg11.setImageResource(normalChipset[user.nextBuffer[0][1]]);
-        nextImg12.setImageResource(normalChipset[user.nextBuffer[0][0]]);
-        nextImg21.setImageResource(normalChipset[user.nextBuffer[1][1]]);
-        nextImg22.setImageResource(normalChipset[user.nextBuffer[1][0]]);
+        if (!gameOver) {
+            nextImg11.setImageResource(normalChipset[user.nextBuffer[0][1]]);
+            nextImg12.setImageResource(normalChipset[user.nextBuffer[0][0]]);
+            nextImg21.setImageResource(normalChipset[user.nextBuffer[1][1]]);
+            nextImg22.setImageResource(normalChipset[user.nextBuffer[1][0]]);
+        }
 
         if(gameOver) {
             gameoverimg.setVisibility(View.VISIBLE);
