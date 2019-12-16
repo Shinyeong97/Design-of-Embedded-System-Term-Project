@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -18,11 +19,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.Serializable;
+import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Serializable {
     static final int TOUCHMODE = 1, BOARDMODE =2;
     int mode = BOARDMODE;
 
@@ -85,9 +93,32 @@ public class MainActivity extends AppCompatActivity {
     public native void DotWrite(int data);
     public native int PbuttonRead();
 
+
+    // KKT
+    private ArrayList<Socket> sockets;
+    private int member;
+    private ArrayList<String> inputStr;
+    HashMap<Socket, String> socket_num_map;
+    //
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        // KKT
+        inputStr = new ArrayList<>();
+        socket_num_map = new HashMap<>();
+        MyApplication myApp = (MyApplication) getApplication();
+        member = myApp.getCurrentMember();
+
+        if(member > 1){
+            sockets = myApp.getSockets();
+        }
+        //
+
+
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         if(mode == TOUCHMODE)
@@ -214,6 +245,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void rendering(boolean stackmode){
+
+//        // KKT
+//        if(member > 1){
+//            for(int i = 0; i<member-1; i++){
+//                Thread worker = new AllReceiveThread(sockets.get(i), this);
+//                worker.start();
+//            }
+//        }
+//        //
+//
+//
+//        // KKT
+//        //for(int i = 0; i<member-1; i++){
+//          //  Thread worker = new AllSendThread(sockets.get(i));
+//            //worker.start();
+//        //}
+//        //
+
+
+
         //data send to another user
         int[] senddata = new int[120];
         int k=0;
@@ -466,4 +517,44 @@ public class MainActivity extends AppCompatActivity {
 
         return normalChipset[color];
     }
+
+//    public class AllReceiveThread extends Thread{
+//        private Socket mConnection;
+//
+//        AllReceiveThread(Socket mConnection, MainActivity priorActivity){
+//            Log.v("KKT", "AllReceiveThread constructor()");
+//            this.mConnection = mConnection;
+//        }
+//
+//        @Override
+//        public void run(){
+//            Log.v("KKT", "AllReceiveThread run()");
+//            try{
+//                Log.v("KKT", mConnection.toString() + "before");
+//                final BufferedReader in = new BufferedReader(new InputStreamReader(mConnection.getInputStream()));
+//                final PrintWriter out = new PrintWriter(mConnection.getOutputStream(), true);
+//
+//                Log.v("KKT", mConnection.toString() + "after");
+//
+//                String s;
+//                while((s= in.readLine()) != null){
+//                    Log.v("KKT", "SimpleServerThread run() after accept send data");
+//                    Log.v("SERVER WORKER THREAD", "client" + s +" sent data");
+//
+//                    inputStr.add(s);
+//                }
+//                in.close();
+//
+//            }catch (IOException e){
+//                e.printStackTrace();
+//            }finally {
+//                try{
+//                    mConnection.close();
+//                }catch (IOException e){
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//    }
+
 }
